@@ -15,10 +15,12 @@ $project = new Project();
 $project->setConfig($config);
 $project->loadHelpers();
 $project->loadLibreries();
+$project->loadControllers();
+
 
 $route = new Route();
 $route->setConfig($config['route']);
-if($route->load()){
+if(!$route->load()){
   echo 'error 404';
   exit();
 }

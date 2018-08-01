@@ -31,9 +31,9 @@ $config['route'][] = array(
 
 $config['route'][] = array(
   'uri' => 'aaa/#/bbb/#/dfghj',
-  'run' => 'HomeController/f/$1/$2',
+  'run' => 'name1/HomeController/f/$1/$2',
   'method' => 'GET',
-  'module' => false,
+  'module' => true,
   'regex' => array(
     array(
       'segment' => 1,

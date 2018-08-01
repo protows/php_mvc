@@ -15,11 +15,14 @@ class HomeController extends MainController{
 
   public function about(){
     echo 'this is about page!';
+    $this->data('ttt', 'dfgh');
+    $this->display('about');
   }
 
   public function f($a, $b){
-    echo $a. '<br />';
-    echo $b. '<br />';
+    $this->data('a', $a);
+    $this->data('b', $b);
+    $this->display('f');
   }
 
 }

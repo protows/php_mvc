@@ -1,5 +1,8 @@
 /application/controllers/HomeController.php
 
+aaa/#/bbb/#/dfghj
+
+aaa/12/bbb/abc/dfghj
 
 AddDefaultCharset UTF-8
 

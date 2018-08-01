@@ -9,10 +9,17 @@ class HomeController extends MainController{
     parent::__construct();
   }
 
+  public function titleModule(){
+    return 'name1';
+  }
+
   public function f($a, $b){
-    echo 'It\'s Module';
-    echo 'a: '. $a. '<br />';
-    echo $b. '<br />';
+    // echo 'It\'s Module';
+    // echo 'a: '. $a. '<br />';
+    // echo $b. '<br />';
+    $this->data('a', $a);
+    $this->data('b', $b);
+    $this->display('f');
   }
 
 }

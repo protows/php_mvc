@@ -9,6 +9,54 @@ class Controller {
     $this->_variables = array();
   }
 
+  public function loadHelper($titleHelper){
+    $pathCoreHelper = 'core/helpers/' .$titleHelper. '.php';
+    $pathAppHelper = 'application/helpers/' .$titleHelper. '.php';
+
+    if(file_exists($pathCoreHelper)){
+      require_once($pathCoreHelper);
+      return true;
+    }elseif(file_exists($pathAppHelper)){
+      require_once($pathAppHelper);
+      return true;
+    }
+    return false;
+  }
+
+  public function loadModel($titleModel, $aliasModel){
+    $titleModule = $this->titleModule();
+
+    $pathModel = '';
+    $titleModule = '';
+    if($titleModule !== false){
+      $pathModel ='application/modules/' .$titleModule. '/models/' .$titleModel. '.php';
+      $titleModel = '\\project\\models\\' .$titleModule. '\\models\\' . $titleModel;
+    }else{
+        $pathModel ='application/models/' .$titleModel. '.php';
+        $titleModel = '\\project\\models\\' . $titleModel;
+    }
+
+    if(file_exists($pathModel)){
+      require_once($pathModel);
+
+      $this->$aliasModel = new $titleModel;
+      return true;
+    }
+    return false;
+  }
+
+  public function loadLibrery($titleLibrery, $aliasLibrery){
+    $pathAppLibrery = 'application/libraries/' .$titleLibrery. '.php';
+
+    if(file_exists($pathAppLibrery)){
+      require_once($pathAppLibrery);
+      $titleLibrery = '\\project\\libreries' . $titleLibrery;
+      $this->$aliasLibrery = new $titleLibrery;
+      return true;
+    }
+    return false;
+  }
+
   public function data($titleVariable, $valueVariable){
       $this->_variables[] = array(
         'title' => $titleVariable,

@@ -11,7 +11,6 @@ $config['db']['charset'] = 'utf8';
 
 $config['load']['controllers'] = array('MainController');
 $config['load']['helpers'] = array('HttpHelper');
-$config['load']['libraries'] = array();
 
 $config['route'][] = array(
   'uri' => '',
@@ -31,9 +30,9 @@ $config['route'][] = array(
 
 $config['route'][] = array(
   'uri' => 'aaa/#/bbb/#/dfghj',
-  'run' => 'HomeController/f/$1/$2',
+  'run' => 'name1/HomeController/f/$1/$2',
   'method' => 'GET',
-  'module' => false,
+  'module' => true,
   'regex' => array(
     array(
       'segment' => 1,

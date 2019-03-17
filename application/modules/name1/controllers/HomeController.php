@@ -14,9 +14,9 @@ class HomeController extends MainController{
   }
 
   public function f($a, $b){
-    // echo 'It\'s Module';
-    // echo 'a: '. $a. '<br />';
-    // echo $b. '<br />';
+    $this->loadModel('User', 'user');
+    $user = $this->user->get();
+    $this->data('user', $user);
     $this->data('a', $a);
     $this->data('b', $b);
     $this->display('f');

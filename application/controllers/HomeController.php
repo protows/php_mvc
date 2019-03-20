@@ -17,7 +17,7 @@ class HomeController extends MainController{
   }
 
   public function about(){
-    echo 'this is about page!';
+	  echo 'this is about page!';
     $this->data('ttt', 'dfgh');
     $this->display('about');
     //CustomHelper:: test();

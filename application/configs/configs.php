@@ -1,13 +1,15 @@
 <?php
-if(!defined('PROJECT_ACCESS'))exit('Access Denied!');
+//if(!defined('PROJECT_ACCESS'))exit('Access Denied!');
 $config = array();
 
+$config['db']['is_used'] = true;
 $config['db']['host'] = 'localhost';
 $config['db']['port'] = '3306';
-$config['db']['username'] = 'root';
-$config['db']['password'] = '';
-$config['db']['database'] = 'test';
+$config['db']['username'] = 'admin';
+$config['db']['password'] = '1';
+$config['db']['database'] = 'dblandship';
 $config['db']['charset'] = 'utf8';
+//$config['db']['type'] = 'postgresql';
 
 $config['load']['controllers'] = array('MainController');
 $config['load']['helpers'] = array('HttpHelper');

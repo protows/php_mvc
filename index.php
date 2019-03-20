@@ -15,9 +15,15 @@ require_once('core/models/Model.php');
 
 $project = new Project();
 $project->setConfig($config);
+
 $project->loadHelpers();
 $project->loadControllers();
 
+if($config['db']['is_used']){
+	require_once('core/databases/ActiveRecord.php');
+	require_once('core/databases/Database.php');
+	$project->loadDb();
+}
 
 $route = new Route();
 $route->setConfig($config['route']);

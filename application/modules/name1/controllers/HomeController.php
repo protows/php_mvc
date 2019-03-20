@@ -14,7 +14,7 @@ class HomeController extends MainController{
   }
 
   public function f($a, $b){
-    $this->loadModel('User', 'user');
+	 // echo "$a $b";
     $user = $this->user->get();
     $this->data('user', $user);
     $this->data('a', $a);

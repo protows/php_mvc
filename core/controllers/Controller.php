@@ -25,24 +25,28 @@ class Controller {
 
   public function loadModel($titleModel, $aliasModel){
     $titleModule = $this->titleModule();
-
+	//echo $titleModule; exit;
     $pathModel = '';
-    $titleModule = '';
+   
     if($titleModule !== false){
       $pathModel ='application/modules/' .$titleModule. '/models/' .$titleModel. '.php';
-      $titleModel = '\\project\\models\\' .$titleModule. '\\models\\' . $titleModel;
-    }else{
-        $pathModel ='application/models/' .$titleModel. '.php';
-        $titleModel = '\\project\\models\\' . $titleModel;
-    }
-
+      $titleModelInst = '\\project\\' .$titleModule. '\\models\\' . $titleModel;
+	  if(file_exists($pathModel)){
+      require_once($pathModel);
+	  $this->$aliasModel = new $titleModelInst;
+      return true;
+		}
+	 }
+       $pathModel ='application/models/' .$titleModel. '.php';
+       $titleModelInst = '\\project\\models\\' . $titleModel;
+    
+	//echo $titleModel; exit;
     if(file_exists($pathModel)){
       require_once($pathModel);
-
-      $this->$aliasModel = new $titleModel;
+	  $this->$aliasModel = new $titleModelInst;
       return true;
     }
-    return false;
+	return false;
   }
 
   public function loadLibrery($titleLibrery, $aliasLibrery){
@@ -66,10 +70,10 @@ class Controller {
     public function display($titleView){
       $titleModule = $this->titleModule();
       for($i=0; $i < count($this->_variables); $i++){
-        ${$this->_variables[$i]['title']} = $this->_variables[$i]['value'];
+		${$this->_variables[$i]['title']} = $this->_variables[$i]['value'];
       }
-
-      if($titleModule !== false){
+	  
+		if($titleModule !== false){
         $pathView ='application/modules/' .$titleModule. '/views/' .$titleView. '.php';
         if(file_exists($pathView)){
           require_once($pathView);

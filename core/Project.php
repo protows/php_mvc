@@ -1,5 +1,6 @@
 <?php
 namespace project\core;
+use project\databases\Database;
 
 if(!defined('PROJECT_ACCESS'))exit('Access Denied!');
 
@@ -37,5 +38,18 @@ class Project {
         }
       }
   }
-
+	
+	public function loadDb(){
+		$db = new Database();
+		$db->setHost($this->_config['db']['host']);
+		$db->setPort($this->_config['db']['port']);
+		$db->setUsername($this->_config['db']['username']);
+		$db->setPassword($this->_config['db']['password']);
+		$db->setDatabase($this->_config['db']['database']);
+		$db->setCharset($this->_config['db']['charset']);
+		
+		$db->init();
+		$GLOBALS['db'] = $db;
+	}
+	
 }
